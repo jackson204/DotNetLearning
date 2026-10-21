@@ -167,7 +167,7 @@ DotNetLearning/
 ├── course/               教學內容（Markdown，唯一來源）
 │   ├── toc.json          課程清單：編號、標題、目標、狀態
 │   ├── STYLE.md          寫作慣例
-│   ├── images/           手繪 SVG（全景圖、分層圖）
+│   ├── images/           SVG 圖（全景圖、分層圖、資料庫圖；由 build/diagrams 產生或手繪）
 │   ├── 00-overview/ 01-sql/ 02-dotnet-and-db/ 03-linq/ 04-web-api/ 05-project/
 ├── lab/                  練習專案 EfCoreLab
 ├── project/              side project（Part 5 建立）

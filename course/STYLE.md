@@ -49,6 +49,7 @@
 | 下一課的引子 | `> **下一個問題**：…` |
 | 流程、時序、關聯圖 | ```` ```mermaid ```` 程式碼區塊（前後各留一個空行） |
 | 手繪圖 | `![一句話說明](../images/xxx.svg)`，SVG 要自帶樣式與背景，不能靠外部 CSS |
+| 資料庫圖（資料表與外鍵） | 不用 Mermaid `erDiagram`（版面太擠），用 `build/diagrams/lab-schema.mjs` 產生的 `../images/lab-schema.svg`；欄位有變就改那支腳本再 `npm run build` |
 | 圖說 | 圖的下一行，斜體：`*圖 1　說明文字*` |
 | 收合的解答 | `<details><summary>看答案</summary>` ＋ **空一行** ＋ 內容 ＋ **空一行** ＋ `</details>` |
 | 並排比較 | 改成表格，或前後兩個程式碼區塊各加粗體小標 |
