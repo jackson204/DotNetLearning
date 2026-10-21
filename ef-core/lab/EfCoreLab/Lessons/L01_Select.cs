@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 namespace EfCoreLab.Lessons;
 
 // 第 1 課：SELECT 取資料 ↔ ToList / Select 投影
-// 對應文件：MyBoards/docs/notes/ef-core/lessons/L01-select.html
+// 對應文件：DotNetLearning/ef-core/L01-select.html
 // 對應 SQL：Lessons/L01.sql（可在 Rider Database 視窗直接執行）
 public static class L01_Select
 {

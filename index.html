@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>.NET 學習首頁</title>
+<link rel="stylesheet" href="assets/learn.css">
+<style>
+  .hero { padding: 44px 0 6px; }
+  .hero h1 { font-size: 2.2em; line-height: 1.3; margin: 6px 0 12px; }
+  .hero p { color: var(--fg-muted); margin: 0 0 8px; }
+
+  .topics { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 14px; margin-top: 14px; }
+  .topic { display: flex; flex-direction: column; gap: 8px; padding: 18px 20px; border: 2px solid var(--accent); border-radius: 14px; background: var(--bg-card); box-shadow: var(--shadow); }
+  .topic.soon { border: 2px dashed var(--border); box-shadow: none; color: var(--fg-muted); }
+  .topic-tag { font: 700 12.5px "Cascadia Code", Consolas, monospace; letter-spacing: .1em; color: var(--accent); }
+  .topic h3 { margin: 0; font-size: 1.3em; }
+  .topic p { margin: 0; font-size: 14.5px; color: var(--fg-muted); }
+  .topic ul { margin: 0; padding-left: 20px; font-size: 14.5px; }
+  .bar { height: 8px; border-radius: 999px; background: var(--bg-soft); border: 1px solid var(--border); overflow: hidden; }
+  .bar > div { height: 100%; width: 0; background: var(--accent); transition: width .3s; }
+  .bar-text { font-size: 13px; color: var(--fg-muted); }
+  .actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 4px; }
+  .btn { display: inline-block; padding: 6px 14px; border-radius: 8px; border: 1px solid var(--accent); text-decoration: none; font-weight: 600; font-size: 14px; }
+  .btn.primary { background: var(--accent); color: var(--on-accent); }
+
+  .method { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 10px; counter-reset: m; }
+  .method > div { counter-increment: m; padding: 12px 14px; border: 1px solid var(--border); border-radius: 12px; background: var(--bg-soft); font-size: 14.5px; }
+  .method > div::before { content: counter(m); display: inline-grid; place-items: center; width: 24px; height: 24px; margin-right: 6px; border-radius: 50%; background: var(--accent); color: var(--on-accent); font-weight: 800; font-size: 13px; }
+  .method b { display: inline; }
+  .method p { margin: 6px 0 0; color: var(--fg-muted); }
+</style>
+</head>
+<body>
+<div class="page">
+  <nav class="topnav">
+    <span class="crumbs">學習首頁</span>
+    <span class="crumbs">DotNetLearning</span>
+  </nav>
+
+  <header class="hero">
+    <div class="lesson-code">DOTNET LEARNING</div>
+    <h1>.NET 學習首頁</h1>
+    <p>這裡集中放所有「學習用」的東西：教學文件、練習專案、零散的知識筆記。side project（例如 MyBoards）只記錄專案本身遇到的問題與決策。</p>
+  </header>
+
+  <h2>學習主題</h2>
+  <div class="topics">
+    <div class="topic">
+      <span class="topic-tag">TOPIC 01</span>
+      <h3>EF Core</h3>
+      <p>從「資料要存在哪裡」推到 ORM，再一次一個小單元，先寫 SQL 再翻成 LINQ，學到 Include、SelectMany、AsNoTracking。</p>
+      <ul>
+        <li>入門：從一個需求推到資料庫</li>
+        <li>學習路線：23 個小單元（已推出 L00、L01）</li>
+        <li>練習專案：<code>ef-core/lab</code>（<code>dotnet run -- L01</code>）</li>
+      </ul>
+      <div class="bar"><div id="efcore-bar"></div></div>
+      <div class="bar-text" id="efcore-text">完成 0 個單元</div>
+      <div class="actions">
+        <a class="btn primary" href="ef-core/index.html">學習路線</a>
+        <a class="btn" href="ef-core/00-basics.html">從入門開始</a>
+      </div>
+    </div>
+    <div class="topic soon">
+      <span class="topic-tag" style="color:var(--fg-muted)">NEXT</span>
+      <h3>下一個主題</h3>
+      <p>例如 ASP.NET Core、LINQ 進階、測試……想學什麼再加。新主題照 EF Core 的結構建立一個資料夾：教學頁 + <code>lab/</code> 練習專案。</p>
+    </div>
+  </div>
+
+  <h2>零散筆記</h2>
+  <p class="lead">不成系列、但以後可能用得到的知識點。</p>
+  <div class="table-wrap"><table>
+    <thead><tr><th>筆記</th><th>標籤</th><th>一句話</th></tr></thead>
+    <tbody>
+      <tr><td><a href="notes/dotnet-cli/dotnet-new-gitignore.md">用 dotnet new gitignore 產生 .gitignore</a></td><td>#dotnet-cli #git</td><td>指令用法、<code>--force</code>、已追蹤檔案用 <code>git rm --cached</code></td></tr>
+    </tbody>
+  </table></div>
+  <p>完整清單：<a href="notes/README.md">notes/README.md</a></p>
+
+  <h2>怎麼學</h2>
+  <div class="method">
+    <div><b>一次一個單元</b><p>每單元 10–20 分鐘，只學一件事。說「下一課」才推出下一課。</p></div>
+    <div><b>先寫 SQL，再寫 LINQ</b><p>LINQ 最後都會變成 SQL，先知道資料庫要收到什麼，再看 EF Core 怎麼幫你寫。</p></div>
+    <div><b>動手跑</b><p>每課都能在練習專案執行，對照 EF Core 實際產生的 SQL。</p></div>
+    <div><b>做練習、勾完成</b><p>先自己寫，再展開解答。完成就在路線圖打勾。</p></div>
+  </div>
+
+  <h2>這個 repo 的結構</h2>
+<pre><code class="nohighlight">DotNetLearning/
+├── index.html          學習首頁（這一頁）
+├── assets/             共用樣式與腳本
+├── ef-core/            主題：EF Core
+│   ├── index.html      學習路線圖
+│   ├── 00-basics.*     入門
+│   ├── L00…L22.*       小單元（.html 圖解版 + .md 純文字版）
+│   └── lab/            練習專案（EfCoreLab.sln）
+└── notes/              零散筆記</code></pre>
+
+  <footer>說明文件：<a href="README.md">README.md</a></footer>
+</div>
+<script>
+(function () {
+  // 與 EF Core 路線圖共用同一份進度紀錄
+  let done = [];
+  try { done = JSON.parse(localStorage.getItem('efcore-lessons-done') || '[]'); } catch (e) { done = []; }
+  const released = ['BASICS', 'L00', 'L01'];
+  const count = released.filter(c => done.includes(c)).length;
+  document.getElementById('efcore-bar').style.width = (count / released.length * 100) + '%';
+  document.getElementById('efcore-text').textContent = `已完成 ${count} / ${released.length} 個已推出的單元（全系列：入門 + 23 課）`;
+})();
+</script>
+</body>
+</html>
