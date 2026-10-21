@@ -234,7 +234,11 @@ function renderHome() {
   const { html, headings, title } = renderMarkdown(src, 'README.md');
   // README 的路線表在 HTML 版換成卡片（資料相同，多了進度勾選）
   const content = html.replace(/<!-- toc:start -->[\s\S]*?<!-- toc:end -->/, roadmapCards(outFile));
-  write(outFile, pageHtml({ title, crumbs: '學習首頁', content, headings, srcPath: 'README.md', outFile }));
+  // 側欄目錄裡的「Part N」改指向卡片區塊（原本的 ### 標題已被卡片取代）
+  const tocHeadings = headings.filter(h => !(h.level === 3 && /^Part \d/.test(h.text)));
+  const roadmapIndex = tocHeadings.findIndex(h => h.text === '學習路線');
+  tocHeadings.splice(roadmapIndex + 1, 0, ...parts.map(p => ({ level: 3, id: `part-${p.id}`, text: `Part ${p.no}　${p.title}` })));
+  write(outFile, pageHtml({ title, crumbs: '學習首頁', content, headings: tocHeadings, srcPath: 'README.md', outFile }));
 }
 
 // ---------- 資產 ----------
