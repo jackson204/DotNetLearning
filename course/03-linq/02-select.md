@@ -148,7 +148,7 @@ FROM [Posts] AS [p]
 | 番茄炒蛋 | 4 | 1000 |
 | 三杯雞 | 3 | 840 |
 
-C# 的 `.Length` 被翻成 SQL Server 的 `LEN()`，**在資料庫端算好**才傳回來。EF Core 認得很多 C# 的屬性和方法，會翻成對應的 SQL 函式；翻不出來的會丟例外（[3-06](06-deferred-execution.md) 會講）。
+C# 的 `.Length` 被翻成 SQL Server 的 `LEN()`，**在資料庫端算好**才傳回來。EF Core 認得很多 C# 的屬性和方法，會翻成對應的 SQL 函式；翻不出來的會丟例外（[3-07](07-deferred-execution.md) 會講）。
 
 #### ⑤ 只要一個欄位
 
@@ -232,7 +232,7 @@ SQL 和 ② 一樣，差別只在 C# 端拿到的是有名字的型別 `List<Blo
 | 好處 | 說明 |
 |---|---|
 | 傳得少、比較快 | 資料庫少讀、網路少傳、記憶體少用。資料量大時差很多 |
-| 不會被追蹤 | 取整個 Entity 時，EF Core 會記住它們以便之後存檔。投影出來的匿名型別或 DTO 不會被追蹤，省下這份工作（[3-08](08-change-tracker.md) 會講） |
+| 不會被追蹤 | 取整個 Entity 時，EF Core 會記住它們以便之後存檔。投影出來的匿名型別或 DTO 不會被追蹤，省下這份工作（[3-09](09-change-tracker.md) 會講） |
 | API 回傳更安全 | 只回前端需要的欄位，不會把不該公開的欄位一起送出去，也不會遇到導覽屬性的循環參考 |
 
 > [!TIP]
@@ -263,7 +263,7 @@ dotnet run -- linq-select --log    # 多印出 EF Core 實際送到資料庫的 
 > db.Posts.Select(p => p.Title).ToList();
 > ```
 >
-> `ToList()` 是「現在就去查」的分界線，**它之前的部分會變成 SQL，之後的部分在 C# 記憶體裡執行**。所以 `Select` 要寫在 `ToList()` 前面。[3-06](06-deferred-execution.md) 會深入講這條分界線。
+> `ToList()` 是「現在就去查」的分界線，**它之前的部分會變成 SQL，之後的部分在 C# 記憶體裡執行**。所以 `Select` 要寫在 `ToList()` 前面。[3-07](07-deferred-execution.md) 會深入講這條分界線。
 
 > [!WARNING]
 > **匿名型別不能當方法的回傳型別**
@@ -349,9 +349,9 @@ FROM [Posts] AS [p]
 - [C# 官方文件：LINQ 投影運算](https://learn.microsoft.com/dotnet/csharp/linq/standard-query-operators/projection-operations)：`Select` 的完整說明（也預告了之後的 `SelectMany`）
 - [EF Core 官方文件：查詢資料](https://learn.microsoft.com/ef/core/querying/)：EF Core 查詢的總覽
 
-> **下一個問題**：首頁只要列出「部落格 1 的文章」。SQL 的 `WHERE` 翻成 LINQ 是什麼？
+> **下一個問題**：`Select(p => p.Title)` 裡的 `p => p.Title` 到底是什麼？打開官方文件，`Select` 的簽章長這樣：`Select<TSource, TResult>(this IQueryable<TSource> source, Expression<Func<TSource, TResult>> selector)`。看懂這一行，之後 `Where`、`OrderBy`、`First` 的文件都能自己查。
 
 <!-- nav:start -->
 ---
-← 上一課：[LINQ 怎麼變成 SQL](01-linq-to-sql.md)　｜　[學習路線](../../README.md#學習路線)　｜　下一課：[Where：篩選](03-where.md)（尚未推出） →
+← 上一課：[LINQ 怎麼變成 SQL](01-linq-to-sql.md)　｜　[學習路線](../../README.md#學習路線)　｜　下一課：[看懂官方文件的方法簽章](03-read-signatures.md)（尚未推出） →
 <!-- nav:end -->

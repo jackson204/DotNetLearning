@@ -77,7 +77,7 @@ return posts;                                // 可以直接回傳、序列化�
 | **描述資料結構** | 屬性 = 欄位，型別 = 欄位型別。打開 class 就知道一篇文章有哪些欄位，不用翻資料庫 |
 | **型別安全** | `post.Tilte` 打錯字 → 編譯錯誤，IDE 直接標紅；`post.Views = "abc"` 也過不了編譯 |
 | **把相關資料綁在一起** | 「一篇文章」是一個東西，可以傳給方法、放進 `List`、回傳給前端變成 JSON |
-| **表達關係** | 之後可以加上 `public Blog Blog`，用 `post.Blog.Url` 取代手寫 JOIN（[3-10](../03-linq/10-relationships.md)） |
+| **表達關係** | 之後可以加上 `public Blog Blog`，用 `post.Blog.Url` 取代手寫 JOIN（[3-11](../03-linq/11-relationships.md)） |
 
 > [!NOTE]
 > **名詞：Entity / POCO**

@@ -144,7 +144,7 @@ protected override void OnModelCreating(ModelBuilder modelBuilder)
 | `HasDefaultValue(0)` / `HasDefaultValueSql("getutcdate()")` | 預設值 | DEFAULT |
 | `HasIndex(x => x.Url).IsUnique()` | 唯一索引 | UNIQUE INDEX |
 | `ToTable("blog")` | 資料表改名 | 資料表名稱 |
-| `HasOne / HasMany / WithOne / WithMany` | 設定關聯 | FOREIGN KEY（[3-10](../03-linq/10-relationships.md)） |
+| `HasOne / HasMany / WithOne / WithMany` | 設定關聯 | FOREIGN KEY（[3-11](../03-linq/11-relationships.md)） |
 | `OnDelete(DeleteBehavior.Cascade)` | 刪除行為 | ON DELETE CASCADE |
 
 ## 練習專案的設定
@@ -251,7 +251,7 @@ C# 程式還是用 `db.Blogs` 和 `b.Url`，對映由 EF Core 處理。
 ## 延伸閱讀
 
 - [EF Core：建立模型（慣例、Data Annotations、Fluent API）](https://learn.microsoft.com/ef/core/modeling/)
-- [EF Core：關聯設定](https://learn.microsoft.com/ef/core/modeling/relationships)（[3-10](../03-linq/10-relationships.md) 會用到）
+- [EF Core：關聯設定](https://learn.microsoft.com/ef/core/modeling/relationships)（[3-11](../03-linq/11-relationships.md) 會用到）
 
 > **下一個問題**：class 和資料表對上了。那寫一段 LINQ 的時候，EF Core 到底怎麼把它變成 SQL、又怎麼把結果表變回物件？
 

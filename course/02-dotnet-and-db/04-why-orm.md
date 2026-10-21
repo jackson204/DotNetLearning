@@ -92,10 +92,10 @@ await db.SaveChangesAsync();
 |---|---|---|
 | 寫 SQL | LINQ 自動轉譯成 SQL，預設參數化（防 SQL Injection） | [3-01](../03-linq/01-linq-to-sql.md) |
 | 一列 → 物件 | 自動實體化（Materialization） | [3-01](../03-linq/01-linq-to-sql.md) |
-| 判斷改了什麼、組 UPDATE | Change Tracker 自動比對 | [3-08](../03-linq/08-change-tracker.md) |
-| JOIN 後組回物件 | `Include(b => b.Posts)` | [3-11](../03-linq/11-include.md) |
+| 判斷改了什麼、組 UPDATE | Change Tracker 自動比對 | [3-09](../03-linq/09-change-tracker.md) |
+| JOIN 後組回物件 | `Include(b => b.Posts)` | [3-12](../03-linq/12-include.md) |
 | 改表結構 | Migration 依 class 產生，並保留版本紀錄 | [5-04](../05-project/04-scaffold.md) |
-| 交易 | 一次 `SaveChanges` 就是一個交易 | [3-16](../03-linq/16-write-relationships.md) |
+| 交易 | 一次 `SaveChanges` 就是一個交易 | [3-17](../03-linq/17-write-relationships.md) |
 
 ## .NET 常見的三種選擇
 
@@ -114,13 +114,13 @@ await db.SaveChangesAsync();
 > [!WARNING]
 > **ORM 不是魔法，也有代價**
 >
-> **效能開銷**：多了轉譯與變更追蹤。純讀取時可加 `AsNoTracking()`（[3-08](../03-linq/08-change-tracker.md)）。
+> **效能開銷**：多了轉譯與變更追蹤。純讀取時可加 `AsNoTracking()`（[3-09](../03-linq/09-change-tracker.md)）。
 >
-> **產生的 SQL 不一定最好**：最常見的是 **N+1 問題**，在迴圈裡讀導覽屬性，每筆都多發一次查詢（[3-13](../03-linq/13-projection-vs-include.md)）。
+> **產生的 SQL 不一定最好**：最常見的是 **N+1 問題**，在迴圈裡讀導覽屬性，每筆都多發一次查詢（[3-14](../03-linq/14-projection-vs-include.md)）。
 >
 > **還是要懂 SQL**：底層仍是送 SQL、收表格。看不懂 EF Core 產生的 SQL，就不知道它慢在哪、錯在哪。這就是 Part 1 先學 SQL 的原因。
 >
-> **可以混用**：EF Core 也能執行自寫 SQL（[3-17](../03-linq/17-advanced.md)），同一個專案也能搭配 Dapper。
+> **可以混用**：EF Core 也能執行自寫 SQL（[3-18](../03-linq/18-advanced.md)），同一個專案也能搭配 Dapper。
 
 ## 動手
 

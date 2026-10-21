@@ -122,7 +122,7 @@ flowchart TB
 > [!TIP]
 > **先記住這個伏筆**
 >
-> 「改了複本，要自己送 UPDATE 回去」很麻煩，你還得記住改過哪些欄位。EF Core 的 **Change Tracker** 就是專門處理這件事的：它記住拿回來時的原始值，呼叫 `SaveChanges()` 時比對差異，自動組出 `UPDATE` 送回資料庫（[3-08](../03-linq/08-change-tracker.md)）。
+> 「改了複本，要自己送 UPDATE 回去」很麻煩，你還得記住改過哪些欄位。EF Core 的 **Change Tracker** 就是專門處理這件事的：它記住拿回來時的原始值，呼叫 `SaveChanges()` 時比對差異，自動組出 `UPDATE` 送回資料庫（[3-09](../03-linq/09-change-tracker.md)）。
 
 一句話總結：**程式用 SQL 告訴資料庫「我要哪些資料」，資料庫把那部分複製一份、排成表格送回來。**
 

@@ -1,7 +1,7 @@
 # 進階專題
 
 <!-- meta:start -->
-Part 3　LINQ：把 SQL 翻成 LINQ　·　單元 3-17　·　約 30 分鐘　·　選讀
+Part 3　LINQ：把 SQL 翻成 LINQ　·　單元 3-18　·　約 30 分鐘　·　選讀
 <!-- meta:end -->
 
 > [!NOTE]
@@ -11,5 +11,5 @@ Part 3　LINQ：把 SQL 翻成 LINQ　·　單元 3-17　·　約 30 分鐘　·
 
 <!-- nav:start -->
 ---
-← 上一課：[寫入關聯資料與交易](16-write-relationships.md)（尚未推出）　｜　[學習路線](../../README.md#學習路線)　｜　下一課：[HTTP Request 與 Response](../04-web-api/01-http.md) →
+← 上一課：[寫入關聯資料與交易](17-write-relationships.md)（尚未推出）　｜　[學習路線](../../README.md#學習路線)　｜　下一課：[HTTP Request 與 Response](../04-web-api/01-http.md) →
 <!-- nav:end -->

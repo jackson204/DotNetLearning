@@ -49,7 +49,7 @@ sequenceDiagram
 | 2 | EF Core 走訪這棵樹，查模型（哪個屬性對哪個欄位），Provider 決定 SQL 方言：`Contains` → `LIKE N'%dotnet%'` | 轉譯（Translation） |
 | 3 | 透過 ADO.NET 送出 SQL，拿回結果表 | 執行 |
 | 4 | 結果表的每一列變成一個 `Blog` 物件 | 實體化（Materialization） |
-| 5 | 物件登記到 Change Tracker（之後改了它，`SaveChanges` 才知道） | 追蹤（Tracking，[3-08](08-change-tracker.md)） |
+| 5 | 物件登記到 Change Tracker（之後改了它，`SaveChanges` 才知道） | 追蹤（Tracking，[3-09](09-change-tracker.md)） |
 
 ## 哪一行才真的送 SQL
 
@@ -65,7 +65,7 @@ query = query.OrderBy(b => b.Url);                           // 還沒送：繼�
 var list = query.ToList();                                   // 這一行才送出 SQL，拿回 List<Blog>
 ```
 
-這叫**延遲執行（Deferred Execution）**。好處是可以一步一步疊條件，最後只送一次 SQL；壞處是不小心就會在迴圈裡重複送（[3-06](06-deferred-execution.md) 會深入講，包括 `IQueryable` 和 `IEnumerable` 的差別）。
+這叫**延遲執行（Deferred Execution）**。好處是可以一步一步疊條件，最後只送一次 SQL；壞處是不小心就會在迴圈裡重複送（[3-07](07-deferred-execution.md) 會深入講，包括 `IQueryable` 和 `IEnumerable` 的差別）。
 
 ## 兩種看 SQL 的方法
 
@@ -109,7 +109,7 @@ WHERE [b].[Url] LIKE @__p_0
 | 什麼時候看 | 寫程式時，對單一查詢 | 執行時，所有查詢 |
 | 會執行嗎 | 不會 | 記錄實際執行的 |
 | 看得到參數值嗎 | 以參數名顯示 | 顯示實際值與型別 |
-| 抓得到「多送了幾次」嗎 | 不行 | 可以（N+1 問題靠它，[3-13](13-projection-vs-include.md)） |
+| 抓得到「多送了幾次」嗎 | 不行 | 可以（N+1 問題靠它，[3-14](14-projection-vs-include.md)） |
 | Web API 怎麼開 | — | `appsettings.Development.json` 的 `Microsoft.EntityFrameworkCore.Database.Command` 設 `Information`（[4-08](../04-web-api/08-config-logging.md)） |
 
 > [!NOTE]
@@ -131,7 +131,7 @@ WHERE [b].[Url] LIKE @__p_0
 | `p.Title.ToUpper()` | `UPPER(…)` | |
 | 你自己寫的 C# 方法 `IsHot(p)` | **翻不出來** | EF Core 不知道方法裡面做什麼 |
 
-翻不出來時會丟 `InvalidOperationException: The LINQ expression ... could not be translated`。解法是改寫成能翻的寫法，或先 `ToList()` 再在記憶體裡算（[3-06](06-deferred-execution.md) 講取捨）。
+翻不出來時會丟 `InvalidOperationException: The LINQ expression ... could not be translated`。解法是改寫成能翻的寫法，或先 `ToList()` 再在記憶體裡算（[3-07](07-deferred-execution.md) 講取捨）。
 
 ## 動手
 

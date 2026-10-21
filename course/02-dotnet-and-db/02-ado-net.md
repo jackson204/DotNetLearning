@@ -201,7 +201,7 @@ var insert = new SqlCommand(
 var newId = (int)await insert.ExecuteScalarAsync();   // 只要那一格，用 ExecuteScalar
 ```
 
-EF Core 幫你新增時，就是用這種方式把自動產生的主鍵填回物件（[3-07](../03-linq/07-add-update-delete.md)）。
+EF Core 幫你新增時，就是用這種方式把自動產生的主鍵填回物件（[3-08](../03-linq/08-add-update-delete.md)）。
 
 </details>
 

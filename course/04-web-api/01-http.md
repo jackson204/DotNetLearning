@@ -229,5 +229,5 @@ Rider 會顯示完整的回應：狀態碼、Header、JSON Body。這個 `.http`
 
 <!-- nav:start -->
 ---
-← 上一課：[進階專題](../03-linq/17-advanced.md)（尚未推出）　｜　[學習路線](../../README.md#學習路線)　｜　下一課：[ASP.NET Core 怎麼啟動](02-startup.md)（尚未推出） →
+← 上一課：[進階專題](../03-linq/18-advanced.md)（尚未推出）　｜　[學習路線](../../README.md#學習路線)　｜　下一課：[ASP.NET Core 怎麼啟動](02-startup.md)（尚未推出） →
 <!-- nav:end -->

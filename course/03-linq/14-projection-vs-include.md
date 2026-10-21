@@ -1,7 +1,7 @@
 # Select 跨關聯 vs Include、N+1 問題
 
 <!-- meta:start -->
-Part 3　LINQ：把 SQL 翻成 LINQ　·　單元 3-13　·　約 25 分鐘　·　練習專案：`dotnet run -- linq-projection`
+Part 3　LINQ：把 SQL 翻成 LINQ　·　單元 3-14　·　約 25 分鐘　·　練習專案：`dotnet run -- linq-projection`
 <!-- meta:end -->
 
 > [!NOTE]
@@ -11,5 +11,5 @@ Part 3　LINQ：把 SQL 翻成 LINQ　·　單元 3-13　·　約 25 分鐘　·
 
 <!-- nav:start -->
 ---
-← 上一課：[多對多的查詢](12-many-to-many.md)（尚未推出）　｜　[學習路線](../../README.md#學習路線)　｜　下一課：[SelectMany：攤平集合](14-select-many.md)（尚未推出） →
+← 上一課：[多對多的查詢](13-many-to-many.md)（尚未推出）　｜　[學習路線](../../README.md#學習路線)　｜　下一課：[SelectMany：攤平集合](15-select-many.md)（尚未推出） →
 <!-- nav:end -->

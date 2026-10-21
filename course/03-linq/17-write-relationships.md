@@ -1,7 +1,7 @@
 # 寫入關聯資料與交易
 
 <!-- meta:start -->
-Part 3　LINQ：把 SQL 翻成 LINQ　·　單元 3-16　·　約 25 分鐘　·　練習專案：`dotnet run -- linq-write-relationships`
+Part 3　LINQ：把 SQL 翻成 LINQ　·　單元 3-17　·　約 25 分鐘　·　練習專案：`dotnet run -- linq-write-relationships`
 <!-- meta:end -->
 
 > [!NOTE]
@@ -11,5 +11,5 @@ Part 3　LINQ：把 SQL 翻成 LINQ　·　單元 3-16　·　約 25 分鐘　·
 
 <!-- nav:start -->
 ---
-← 上一課：[Join 與 GroupJoin](15-join.md)（尚未推出）　｜　[學習路線](../../README.md#學習路線)　｜　下一課：[進階專題](17-advanced.md)（尚未推出） →
+← 上一課：[Join 與 GroupJoin](16-join.md)（尚未推出）　｜　[學習路線](../../README.md#學習路線)　｜　下一課：[進階專題](18-advanced.md)（尚未推出） →
 <!-- nav:end -->

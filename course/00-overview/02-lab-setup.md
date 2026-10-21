@@ -177,7 +177,7 @@ FROM [Blogs] AS [b]
 > [!TIP]
 > **差別在哪？**
 >
-> `ToQueryString()` 只看單一查詢的翻譯結果；記錄則會抓到**所有**實際送出的 SQL。之後學 N+1 問題（[3-13](../03-linq/13-projection-vs-include.md)）時，你會靠記錄發現「明明只寫一行，卻送了 11 次 SQL」。在 ASP.NET Core 專案裡，把 `appsettings.Development.json` 的 `Microsoft.EntityFrameworkCore.Database.Command` 設成 `Information`，效果就跟方法二一樣（[4-08](../04-web-api/08-config-logging.md)）。
+> `ToQueryString()` 只看單一查詢的翻譯結果；記錄則會抓到**所有**實際送出的 SQL。之後學 N+1 問題（[3-14](../03-linq/14-projection-vs-include.md)）時，你會靠記錄發現「明明只寫一行，卻送了 11 次 SQL」。在 ASP.NET Core 專案裡，把 `appsettings.Development.json` 的 `Microsoft.EntityFrameworkCore.Database.Command` 設成 `Information`，效果就跟方法二一樣（[4-08](../04-web-api/08-config-logging.md)）。
 
 ## 在 Rider 裡直接執行 SQL
 
@@ -229,7 +229,7 @@ Part 1 學 SQL 的時候，直接對資料庫執行最快。SQL 單元都有一�
 <details>
 <summary>看答案</summary>
 
-它是文章與標籤多對多關係的**中間表**，每一列代表「某篇文章有某個標籤」，欄位是 `PostsPostId` 和 `TagsTagId`。EF Core 自動建立，C# 裡沒有對應的 class。[1-09](../01-sql/09-many-to-many.md) 和 [3-12](../03-linq/12-many-to-many.md) 會詳細講。
+它是文章與標籤多對多關係的**中間表**，每一列代表「某篇文章有某個標籤」，欄位是 `PostsPostId` 和 `TagsTagId`。EF Core 自動建立，C# 裡沒有對應的 class。[1-09](../01-sql/09-many-to-many.md) 和 [3-13](../03-linq/13-many-to-many.md) 會詳細講。
 
 </details>
 

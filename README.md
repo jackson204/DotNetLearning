@@ -66,21 +66,22 @@
 |---|---|---|---|---|
 | 3-01 | [LINQ 怎麼變成 SQL](course/03-linq/01-linq-to-sql.md) | 運算式樹、翻譯、實體化；用 ToQueryString 和 log 看 EF Core 送出的 SQL | 20 分 | ✅ 可以學 |
 | 3-02 | [Select：投影](course/03-linq/02-select.md) | ToList 取整張表、Select 只取需要的欄位、改名、計算、投影成 DTO；為什麼投影比較好 | 20 分 | ✅ 可以學 |
-| 3-03 | [Where：篩選](course/03-linq/03-where.md) | WHERE → Where：AND / OR、Contains（LIKE）、list.Contains（IN）、NULL 比較 | 20 分 | ⏳ 尚未推出 |
-| 3-04 | [OrderBy、Skip、Take：排序與分頁](course/03-linq/04-order-by-paging.md) | ORDER BY → OrderBy / ThenBy、OFFSET FETCH → Skip / Take、分頁 API 的寫法 | 15 分 | ⏳ 尚未推出 |
-| 3-05 | [取單筆：First、Single、Find](course/03-linq/05-single-row.md) | 四種取單筆方法的差別、找不到時會怎樣、FindAsync 為什麼不用 SQL | 15 分 | ⏳ 尚未推出 |
-| 3-06 | [延遲執行：IQueryable 與 IEnumerable](course/03-linq/06-deferred-execution.md) | 查詢什麼時候真的送出、ToList 放錯位置的代價、在記憶體裡做的事與在資料庫做的事 | 20 分 | ⏳ 尚未推出 |
-| 3-07 | [新增、修改、刪除與 SaveChanges](course/03-linq/07-add-update-delete.md) | INSERT / UPDATE / DELETE → Add / 改屬性 / Remove；SaveChanges 一次送出 | 20 分 | ⏳ 尚未推出 |
-| 3-08 | [Change Tracker 與 AsNoTracking](course/03-linq/08-change-tracker.md) | 五種 Entity 狀態、EF Core 怎麼知道你改了什麼、唯讀查詢為什麼要 AsNoTracking | 20 分 | ⏳ 尚未推出 |
-| 3-09 | [GroupBy 與聚合](course/03-linq/09-group-by.md) | Count / Sum / Max / Average、GroupBy → GROUP BY、哪些寫法翻不成 SQL | 20 分 | ⏳ 尚未推出 |
-| 3-10 | [關聯在 C# 裡：導覽屬性與外鍵](course/03-linq/10-relationships.md) | 一對一 / 一對多 / 多對多在 class 裡怎麼寫、Fluent API 怎麼設定、EF Core 自動建的中間表 | 25 分 | ⏳ 尚未推出 |
-| 3-11 | [Include 與 ThenInclude](course/03-linq/11-include.md) | JOIN → Include：部落格連同文章一起取出、多層 Include、一對一的 Include | 20 分 | ⏳ 尚未推出 |
-| 3-12 | [多對多的查詢](course/03-linq/12-many-to-many.md) | 依標籤找文章（Any）、文章的標籤（Include）、沒人用的標籤（!Any） | 20 分 | ⏳ 尚未推出 |
-| 3-13 | [Select 跨關聯 vs Include、N+1 問題](course/03-linq/13-projection-vs-include.md) | 在 Select 裡讀導覽屬性只查需要的欄位；迴圈裡讀導覽屬性為什麼會多送 N 次 SQL | 25 分 | ⏳ 尚未推出 |
-| 3-14 | [SelectMany：攤平集合](course/03-linq/14-select-many.md) | 把「每個部落格的文章清單」攤成一張文章表；Select 與 SelectMany 的差別 | 20 分 | ⏳ 尚未推出 |
-| 3-15 | [Join 與 GroupJoin](course/03-linq/15-join.md) | 沒有導覽屬性時怎麼 JOIN；LEFT JOIN 的 LINQ 寫法 | 20 分 | ⏳ 尚未推出 |
-| 3-16 | [寫入關聯資料與交易](course/03-linq/16-write-relationships.md) | 新增文章同時加標籤、改外鍵、串聯刪除；一次 SaveChanges 就是一個交易、何時要自己開交易 | 25 分 | ⏳ 尚未推出 |
-| 3-17 | [進階專題](course/03-linq/17-advanced.md) | Split Query、Raw SQL、ExecuteUpdate / ExecuteDelete、全域查詢篩選（軟刪除）、並行衝突 | 30 分 | ⏳ 尚未推出（選讀） |
+| 3-03 | [看懂官方文件的方法簽章](course/03-linq/03-read-signatures.md) | 拆解 Select / Where 的簽章：泛型 TSource、this 擴充方法、Func 與 lambda、多載、Enumerable 與 Queryable 兩個版本；在 docs 和 Rider 裡查方法 | 20 分 | ⏳ 尚未推出 |
+| 3-04 | [Where：篩選](course/03-linq/04-where.md) | WHERE → Where：AND / OR、Contains（LIKE）、list.Contains（IN）、NULL 比較 | 20 分 | ⏳ 尚未推出 |
+| 3-05 | [OrderBy、Skip、Take：排序與分頁](course/03-linq/05-order-by-paging.md) | ORDER BY → OrderBy / ThenBy、OFFSET FETCH → Skip / Take、分頁 API 的寫法 | 15 分 | ⏳ 尚未推出 |
+| 3-06 | [取單筆：First、Single、Find](course/03-linq/06-single-row.md) | 四種取單筆方法的差別、找不到時會怎樣、FindAsync 為什麼不用 SQL | 15 分 | ⏳ 尚未推出 |
+| 3-07 | [延遲執行：IQueryable 與 IEnumerable](course/03-linq/07-deferred-execution.md) | 查詢什麼時候真的送出、ToList 放錯位置的代價、在記憶體裡做的事與在資料庫做的事 | 20 分 | ⏳ 尚未推出 |
+| 3-08 | [新增、修改、刪除與 SaveChanges](course/03-linq/08-add-update-delete.md) | INSERT / UPDATE / DELETE → Add / 改屬性 / Remove；SaveChanges 一次送出 | 20 分 | ⏳ 尚未推出 |
+| 3-09 | [Change Tracker 與 AsNoTracking](course/03-linq/09-change-tracker.md) | 五種 Entity 狀態、EF Core 怎麼知道你改了什麼、唯讀查詢為什麼要 AsNoTracking | 20 分 | ⏳ 尚未推出 |
+| 3-10 | [GroupBy 與聚合](course/03-linq/10-group-by.md) | Count / Sum / Max / Average、GroupBy → GROUP BY、哪些寫法翻不成 SQL | 20 分 | ⏳ 尚未推出 |
+| 3-11 | [關聯在 C# 裡：導覽屬性與外鍵](course/03-linq/11-relationships.md) | 一對一 / 一對多 / 多對多在 class 裡怎麼寫、Fluent API 怎麼設定、EF Core 自動建的中間表 | 25 分 | ⏳ 尚未推出 |
+| 3-12 | [Include 與 ThenInclude](course/03-linq/12-include.md) | JOIN → Include：部落格連同文章一起取出、多層 Include、一對一的 Include | 20 分 | ⏳ 尚未推出 |
+| 3-13 | [多對多的查詢](course/03-linq/13-many-to-many.md) | 依標籤找文章（Any）、文章的標籤（Include）、沒人用的標籤（!Any） | 20 分 | ⏳ 尚未推出 |
+| 3-14 | [Select 跨關聯 vs Include、N+1 問題](course/03-linq/14-projection-vs-include.md) | 在 Select 裡讀導覽屬性只查需要的欄位；迴圈裡讀導覽屬性為什麼會多送 N 次 SQL | 25 分 | ⏳ 尚未推出 |
+| 3-15 | [SelectMany：攤平集合](course/03-linq/15-select-many.md) | 把「每個部落格的文章清單」攤成一張文章表；Select 與 SelectMany 的差別 | 20 分 | ⏳ 尚未推出 |
+| 3-16 | [Join 與 GroupJoin](course/03-linq/16-join.md) | 沒有導覽屬性時怎麼 JOIN；LEFT JOIN 的 LINQ 寫法 | 20 分 | ⏳ 尚未推出 |
+| 3-17 | [寫入關聯資料與交易](course/03-linq/17-write-relationships.md) | 新增文章同時加標籤、改外鍵、串聯刪除；一次 SaveChanges 就是一個交易、何時要自己開交易 | 25 分 | ⏳ 尚未推出 |
+| 3-18 | [進階專題](course/03-linq/18-advanced.md) | Split Query、Raw SQL、ExecuteUpdate / ExecuteDelete、全域查詢篩選（軟刪除）、並行衝突 | 30 分 | ⏳ 尚未推出（選讀） |
 
 ### Part 4　ASP.NET Core Web API
 

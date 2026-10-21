@@ -39,9 +39,9 @@ Part 2　.NET 怎麼跟資料庫說話　·　單元 2-05　·　約 15 分鐘
 | 零件 | 做什麼 | 在哪學 |
 |---|---|---|
 | **DbContext / DbSet\<T\>** | 入口與一次工作階段；`DbSet<Post>` 代表 `Posts` 表 | [2-06](06-dbcontext.md) |
-| **Model（模型）** | Entity class + `OnModelCreating` 的設定，描述 class ↔ 資料表的對映：哪個屬性是主鍵、欄位多長、表跟表怎麼關聯 | [2-07](07-mapping.md)、[3-10](../03-linq/10-relationships.md) |
+| **Model（模型）** | Entity class + `OnModelCreating` 的設定，描述 class ↔ 資料表的對映：哪個屬性是主鍵、欄位多長、表跟表怎麼關聯 | [2-07](07-mapping.md)、[3-11](../03-linq/11-relationships.md) |
 | **LINQ 轉譯** | 把你寫的 `Where(p => p.BlogId == 1)` 變成 SQL | [3-01](../03-linq/01-linq-to-sql.md) |
-| **Change Tracker** | 記住查出來的物件和原始值，`SaveChanges()` 時比對出要送哪些 INSERT / UPDATE / DELETE | [3-08](../03-linq/08-change-tracker.md) |
+| **Change Tracker** | 記住查出來的物件和原始值，`SaveChanges()` 時比對出要送哪些 INSERT / UPDATE / DELETE | [3-09](../03-linq/09-change-tracker.md) |
 | **實體化（Materialization）** | 把結果表的每一列變成一個物件 | [3-01](../03-linq/01-linq-to-sql.md) |
 | **Migration** | 比對 class 的變化，產生建表 / 改表的程式碼 | [5-04](../05-project/04-scaffold.md) |
 
