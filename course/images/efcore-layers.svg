@@ -1,0 +1,94 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 660" width="760" height="660" role="img" aria-label="EF Core 分層架構：你的程式 → EF Core 核心與 Provider（ORM）→ ADO.NET → SQL Server">
+<style>
+  svg {
+    --bg: #ffffff; --fg: #1f2328; --muted: #59636e; --border: #d1d9e0; --soft: #f6f8fa; --card: #ffffff; --accent: #6d28d9;
+    --app: #dcfce7; --app-b: #16a34a; --ef: #dbeafe; --ef-b: #2563eb; --prov: #ffedd5; --prov-b: #ea580c; --ado: #ede9fe; --ado-b: #7c3aed; --db: #fef9c3; --db-b: #ca8a04;
+    font-family: "Segoe UI", "Microsoft JhengHei", "Noto Sans TC", "PingFang TC", sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    svg {
+      --bg: #0d1117; --fg: #e6edf3; --muted: #9198a1; --border: #3d444d; --soft: #151b23; --card: #151b23; --accent: #b58cff;
+      --app: #12261b; --app-b: #3fb950; --ef: #10223f; --ef-b: #60a5fa; --prov: #2e1a0d; --prov-b: #fb923c; --ado: #231a3d; --ado-b: #a78bfa; --db: #2b2408; --db-b: #facc15;
+    }
+  }
+  .bg { fill: var(--bg); }
+  text { fill: var(--fg); font-size: 13px; }
+  .b { font-size: 16px; font-weight: 700; }
+  .s { font-size: 12.5px; fill: var(--muted); }
+  .chip-b { font-size: 12.5px; font-weight: 700; }
+  .chip-s { font-size: 11px; fill: var(--muted); }
+  .arrow-t { font-size: 12.5px; fill: var(--muted); }
+  .arrow { font-size: 20px; font-weight: 700; fill: var(--accent); }
+  .tag { font-size: 11px; font-weight: 700; fill: var(--muted); }
+  .pill { fill: var(--card); stroke: var(--border); stroke-width: 1; }
+  .orm-frame { fill: none; stroke: var(--accent); stroke-width: 3; }
+  .orm-label { font-size: 13px; font-weight: 800; fill: var(--accent); }
+  .box.app { fill: var(--app); stroke: var(--app-b); stroke-width: 2; }
+  .box.ef { fill: var(--ef); stroke: var(--ef-b); stroke-width: 2; }
+  .box.prov { fill: var(--prov); stroke: var(--prov-b); stroke-width: 2; }
+  .box.ado { fill: var(--ado); stroke: var(--ado-b); stroke-width: 2; }
+  .chip { fill: var(--card); stroke: var(--ef-b); stroke-width: 1; }
+  .db { fill: var(--db); stroke: var(--db-b); stroke-width: 2; }
+  .db-top { fill: var(--db); stroke: var(--db-b); stroke-width: 2; filter: brightness(.95); }
+</style>
+<rect class="bg" x="0" y="0" width="760" height="660" rx="12"/>
+
+<!-- 你的程式 -->
+<rect class="box app" x="40" y="24" width="680" height="84" rx="10"/>
+<rect class="pill" x="300" y="31" width="160" height="16" rx="8"/>
+<text class="tag" x="380" y="43" text-anchor="middle">不是 ORM：使用 ORM 的程式</text>
+<text class="b" x="380" y="72" text-anchor="middle">你的 ASP.NET Core 程式</text>
+<text class="s" x="380" y="94" text-anchor="middle">API Endpoint、Entity class（Blog / Post / Tag）</text>
+<text class="arrow-t" x="325" y="140" text-anchor="end">LINQ 查詢、Add / Remove、SaveChanges()</text>
+<text class="arrow" x="380" y="145" text-anchor="middle">↓ ↑</text>
+<text class="arrow-t" x="435" y="140">Entity 物件（List&lt;Blog&gt;）</text>
+
+<!-- ORM 框 -->
+<rect class="orm-frame" x="40" y="162" width="680" height="268" rx="14"/>
+<text class="orm-label" x="56" y="186">ORM ＝ EF Core（核心 + Provider）</text>
+
+<rect class="box ef" x="56" y="198" width="648" height="130" rx="10"/>
+<text class="b" x="380" y="224" text-anchor="middle">EF Core 核心</text>
+<rect class="chip" x="68" y="238" width="118" height="78" rx="8"/>
+<text class="chip-b" x="127" y="258" text-anchor="middle">DbContext /</text>
+<text class="chip-b" x="127" y="274" text-anchor="middle">DbSet&lt;T&gt;</text>
+<text class="chip-s" x="127" y="296" text-anchor="middle">入口與工作階段</text>
+<rect class="chip" x="194" y="238" width="118" height="78" rx="8"/>
+<text class="chip-b" x="253" y="258" text-anchor="middle">Model（模型）</text>
+<text class="chip-s" x="253" y="278" text-anchor="middle">Entity + OnModelCreating</text>
+<text class="chip-s" x="253" y="294" text-anchor="middle">class ↔ 資料表的對映</text>
+<rect class="chip" x="320" y="238" width="118" height="78" rx="8"/>
+<text class="chip-b" x="379" y="258" text-anchor="middle">LINQ 轉譯</text>
+<text class="chip-s" x="379" y="278" text-anchor="middle">運算式樹 → SQL</text>
+<rect class="chip" x="446" y="238" width="118" height="78" rx="8"/>
+<text class="chip-b" x="505" y="258" text-anchor="middle">Change Tracker</text>
+<text class="chip-s" x="505" y="278" text-anchor="middle">記原始值、比對變更</text>
+<rect class="chip" x="572" y="238" width="118" height="78" rx="8"/>
+<text class="chip-b" x="631" y="258" text-anchor="middle">實體化</text>
+<text class="chip-s" x="631" y="278" text-anchor="middle">結果表的列 → 物件</text>
+
+<rect class="box prov" x="56" y="340" width="648" height="76" rx="10"/>
+<text class="b" x="380" y="366" text-anchor="middle">Database Provider</text>
+<text class="s" x="380" y="386" text-anchor="middle">Microsoft.EntityFrameworkCore.SqlServer：EF Core 的外掛套件，產生 SQL Server 的 SQL 寫法（T-SQL）</text>
+<text class="s" x="380" y="404" text-anchor="middle">換資料庫就是換這一塊</text>
+
+<text class="arrow-t" x="325" y="462" text-anchor="end">SQL 文字</text>
+<text class="arrow" x="380" y="467" text-anchor="middle">↓ ↑</text>
+<text class="arrow-t" x="435" y="462">結果表</text>
+
+<!-- ADO.NET -->
+<rect class="box ado" x="40" y="484" width="680" height="76" rx="10"/>
+<rect class="pill" x="290" y="491" width="180" height="16" rx="8"/>
+<text class="tag" x="380" y="503" text-anchor="middle">不是 ORM：底層驅動程式</text>
+<text class="b" x="380" y="528" text-anchor="middle">ADO.NET</text>
+<text class="s" x="380" y="548" text-anchor="middle">Microsoft.Data.SqlClient：依連線字串連線、送出 SQL、讀取結果表</text>
+
+<!-- 資料庫 -->
+<text class="arrow-t" x="325" y="590" text-anchor="end">SQL 文字（Queries / Updates）</text>
+<text class="arrow" x="380" y="595" text-anchor="middle">↓ ↑</text>
+<text class="arrow-t" x="435" y="590">結果表 / 影響筆數</text>
+<path class="db" d="M300,612 v24 a80,12 0 0 0 160,0 v-24"/>
+<ellipse class="db" cx="380" cy="612" rx="80" ry="12"/>
+<ellipse class="db-top" cx="380" cy="612" rx="80" ry="12"/>
+<text class="b" x="380" y="640" text-anchor="middle" font-size="13">SQL Server</text>
+</svg>

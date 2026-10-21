@@ -1,0 +1,140 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 440" width="1000" height="440" role="img" aria-label="發一篇文章時，資料從前端經過 Minimal API、EF Core、ADO.NET 到 SQL Server，再把結果送回前端">
+<style>
+  svg {
+    --bg: #ffffff; --fg: #1f2328; --muted: #59636e; --border: #d1d9e0; --soft: #f6f8fa; --card: #ffffff;
+    --accent: #6d28d9; --tip: #1a7f37; --orange: #ea580c;
+    --app: #dcfce7; --app-b: #16a34a; --orm: #ffe4e6; --orm-b: #e11d48; --ado: #ede9fe; --ado-b: #7c3aed; --db: #fef9c3; --db-b: #ca8a04;
+    font-family: "Segoe UI", "Microsoft JhengHei", "Noto Sans TC", "PingFang TC", sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    svg {
+      --bg: #0d1117; --fg: #e6edf3; --muted: #9198a1; --border: #3d444d; --soft: #151b23; --card: #151b23;
+      --accent: #b58cff; --tip: #3fb950; --orange: #fb923c;
+      --app: #12261b; --app-b: #3fb950; --orm: #3b1520; --orm-b: #f472b6; --ado: #231a3d; --ado-b: #a78bfa; --db: #2b2408; --db-b: #facc15;
+    }
+  }
+  .bg { fill: var(--bg); }
+  text { fill: var(--fg); font-size: 13px; }
+  .h { font-size: 15px; font-weight: 700; }
+  .b { font-size: 14.5px; font-weight: 700; }
+  .xs { font-size: 11.5px; fill: var(--muted); }
+  .code { font-size: 12px; font-family: "Cascadia Code", Consolas, "Courier New", monospace; fill: var(--muted); }
+  .step { font-size: 12.5px; fill: var(--muted); }
+  .num { font-size: 13px; font-weight: 800; fill: #ffffff; }
+  .btn-t { font-size: 12px; font-weight: 700; fill: #ffffff; }
+  .t-req { font-size: 14px; font-weight: 700; fill: var(--accent); }
+  .t-res { font-size: 14px; font-weight: 700; fill: var(--tip); }
+  .t-db { font-size: 14px; font-weight: 700; fill: var(--orange); }
+  .card { fill: var(--card); stroke: var(--border); stroke-width: 2; }
+  .bar { fill: var(--soft); }
+  .field { fill: var(--soft); stroke: var(--border); }
+  .btn { fill: var(--accent); }
+  .server { fill: var(--soft); stroke: var(--muted); stroke-width: 2; stroke-dasharray: 6 4; }
+  .box.app { fill: var(--app); stroke: var(--app-b); stroke-width: 2; }
+  .box.orm { fill: var(--orm); stroke: var(--orm-b); stroke-width: 2; }
+  .box.ado { fill: var(--ado); stroke: var(--ado-b); stroke-width: 2; }
+  .box.db { fill: var(--db); stroke: var(--db-b); stroke-width: 2; }
+  .db-top { fill: var(--db); stroke: var(--db-b); stroke-width: 2; filter: brightness(.95); }
+  .l-req { fill: none; stroke: var(--accent); stroke-width: 3; }
+  .l-res { fill: none; stroke: var(--tip); stroke-width: 3; }
+  .l-db { fill: none; stroke: var(--orange); stroke-width: 3; }
+  .l-in { fill: none; stroke: var(--muted); stroke-width: 2; }
+  .c-req, .f-req { fill: var(--accent); }
+  .c-res, .f-res { fill: var(--tip); }
+  .c-db, .f-db { fill: var(--orange); }
+  .f-muted { fill: var(--muted); }
+  .hl { opacity: .28; } .hl[data-hl~="db"] { opacity: 1; } .hl[data-hl~="db"] .box { stroke-width: 4; } .hl[data-hl~="db"] .card { stroke: var(--accent); stroke-width: 3; }
+</style>
+<defs>
+  <marker id="ah-req" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path class="f-req" d="M0,0 L10,5 L0,10 z"/></marker>
+  <marker id="ah-res" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path class="f-res" d="M0,0 L10,5 L0,10 z"/></marker>
+  <marker id="ah-db" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path class="f-db" d="M0,0 L10,5 L0,10 z"/></marker>
+  <marker id="ah-in" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="f-muted" d="M0,0 L10,5 L0,10 z"/></marker>
+</defs>
+<rect class="bg" x="0" y="0" width="1000" height="440" rx="12"/>
+
+<!-- 前端：瀏覽器視窗 -->
+<g class="hl" data-hl="http">
+  <rect class="card" x="20" y="70" width="230" height="190" rx="10"/>
+  <rect class="bar" x="20" y="70" width="230" height="30" rx="10"/>
+  <rect class="bar" x="20" y="88" width="230" height="12"/>
+  <circle cx="38" cy="85" r="5" fill="#ff5f57"/><circle cx="54" cy="85" r="5" fill="#febc2e"/><circle cx="70" cy="85" r="5" fill="#28c840"/>
+  <rect class="field" x="84" y="77" width="150" height="16" rx="8"/>
+  <text class="xs" x="94" y="89">myblog.com/new</text>
+  <text class="b" x="40" y="128">發表新文章</text>
+  <text class="xs" x="40" y="150">標題</text>
+  <rect class="field" x="40" y="156" width="190" height="20" rx="4"/>
+  <text class="xs" x="48" y="170">EF Core 入門</text>
+  <text class="xs" x="40" y="194">內容</text>
+  <rect class="field" x="40" y="200" width="190" height="26" rx="4"/>
+  <rect class="btn" x="160" y="232" width="70" height="20" rx="5"/>
+  <text class="btn-t" x="195" y="246" text-anchor="middle">送出</text>
+  <text class="h" x="135" y="292" text-anchor="middle">前端（瀏覽器 / App）</text>
+</g>
+
+<!-- 後端 -->
+<rect class="server" x="400" y="40" width="300" height="330" rx="14"/>
+<text class="h" x="550" y="68" text-anchor="middle">後端：ASP.NET Core 程式</text>
+<g class="hl" data-hl="api">
+  <rect class="box app" x="425" y="85" width="250" height="62" rx="9"/>
+  <text class="b" x="550" y="110" text-anchor="middle">Minimal API</text>
+  <text class="code" x="550" y="132" text-anchor="middle">app.MapPost("/posts", …)</text>
+</g>
+<g class="hl" data-hl="efcore">
+  <rect class="box orm" x="425" y="180" width="250" height="62" rx="9"/>
+  <text class="b" x="550" y="205" text-anchor="middle">EF Core（ORM）</text>
+  <text class="code" x="550" y="227" text-anchor="middle">db.Posts.Add(post); SaveChanges()</text>
+</g>
+<g class="hl" data-hl="efcore ado">
+  <rect class="box ado" x="425" y="275" width="250" height="62" rx="9"/>
+  <text class="b" x="550" y="300" text-anchor="middle">ADO.NET</text>
+  <text class="code" x="550" y="322" text-anchor="middle">Microsoft.Data.SqlClient</text>
+</g>
+<path class="l-in" d="M550,147 V178" marker-end="url(#ah-in)"/>
+<path class="l-in" d="M550,242 V273" marker-end="url(#ah-in)"/>
+<text class="step" x="560" y="167">② JSON → Post 物件</text>
+<text class="step" x="560" y="262">② LINQ / 變更 → SQL</text>
+<text class="step" x="550" y="395" text-anchor="middle">回程：EF Core 取回新 PostId → API 包成 Response</text>
+
+<!-- 資料庫 -->
+<g class="hl" data-hl="db">
+  <path class="box db" d="M850,250 v80 a65,18 0 0 0 130,0 v-80"/>
+  <ellipse class="box db" cx="915" cy="250" rx="65" ry="18"/>
+  <ellipse class="db-top" cx="915" cy="250" rx="65" ry="18"/>
+  <text class="b" x="915" y="305" text-anchor="middle">SQL Server</text>
+  <text class="xs" x="915" y="325" text-anchor="middle">Posts 資料表</text>
+  <text class="h" x="915" y="385" text-anchor="middle">資料庫</text>
+</g>
+
+<!-- ① Request -->
+<g class="hl" data-hl="http">
+  <path class="l-req" d="M255,120 H395" marker-end="url(#ah-req)"/>
+  <circle class="c-req" cx="325" cy="96" r="12"/><text class="num" x="325" y="101" text-anchor="middle">1</text>
+  <text class="t-req" x="325" y="146" text-anchor="middle">HTTP Request</text>
+  <text class="code" x="325" y="164" text-anchor="middle">POST /posts</text>
+  <text class="code" x="325" y="180" text-anchor="middle">{ "title": … }</text>
+</g>
+<!-- ⑤ Response -->
+<g class="hl" data-hl="http">
+  <path class="l-res" d="M395,235 H255" marker-end="url(#ah-res)"/>
+  <circle class="c-res" cx="325" cy="211" r="12"/><text class="num" x="325" y="216" text-anchor="middle">5</text>
+  <text class="t-res" x="325" y="261" text-anchor="middle">HTTP Response</text>
+  <text class="code" x="325" y="279" text-anchor="middle">201 Created</text>
+  <text class="code" x="325" y="295" text-anchor="middle">{ "postId": 1 }</text>
+</g>
+<!-- ③ SQL -->
+<g class="hl" data-hl="db">
+  <path class="l-db" d="M705,290 H845" marker-end="url(#ah-db)"/>
+  <circle class="c-db" cx="775" cy="268" r="12"/><text class="num" x="775" y="273" text-anchor="middle">3</text>
+  <text class="t-db" x="775" y="244" text-anchor="middle">SQL 文字</text>
+  <text class="code" x="775" y="226" text-anchor="middle">INSERT INTO Posts</text>
+</g>
+<!-- ④ 結果 -->
+<g class="hl" data-hl="db">
+  <path class="l-db" d="M845,340 H705" marker-end="url(#ah-db)"/>
+  <circle class="c-db" cx="775" cy="318" r="12"/><text class="num" x="775" y="323" text-anchor="middle">4</text>
+  <text class="t-db" x="775" y="364" text-anchor="middle">結果</text>
+  <text class="code" x="775" y="380" text-anchor="middle">影響 1 列</text>
+  <text class="code" x="775" y="396" text-anchor="middle">新 PostId = 1</text>
+</g>
+</svg>

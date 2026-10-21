@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{TITLE}}</title>
+<link rel="stylesheet" href="{{ASSETS}}alerts-base.css">
+<link rel="stylesheet" href="{{ASSETS}}alerts-light.css">
+<link rel="stylesheet" href="{{ASSETS}}alerts-dark.css">
+<link rel="stylesheet" media="(prefers-color-scheme: light)" href="{{ASSETS}}hljs-light.css">
+<link rel="stylesheet" media="(prefers-color-scheme: dark)" href="{{ASSETS}}hljs-dark.css">
+<link rel="stylesheet" href="{{ASSETS}}style.css">
+</head>
+<body>
+<div class="layout">
+  <aside class="side">
+    <a class="side-home" href="{{HOME}}">.NET 學習首頁</a>
+    <div class="side-label">本頁目錄</div>
+    {{TOC}}
+  </aside>
+  <main class="page">
+    <nav class="crumbs">{{CRUMBS}}</nav>
+    <article class="content">
+{{CONTENT}}
+    </article>
+    {{PAGER}}
+    <footer class="foot">原始檔：<code>{{SOURCE}}</code>　·　Markdown 是唯一來源，這一頁由 <code>npm run build</code> 產生</footer>
+  </main>
+</div>
+<script src="{{ASSETS}}mermaid.min.js"></script>
+<script src="{{ASSETS}}site.js"></script>
+</body>
+</html>

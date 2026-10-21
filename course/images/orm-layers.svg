@@ -1,0 +1,89 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 600" width="1000" height="600" role="img" aria-label="沒有 ORM 與有 ORM 的分層對照：有 ORM 時，你的程式只跟 EF Core 打交道，EF Core 再去呼叫 ADO.NET">
+<style>
+  svg {
+    --bg: #ffffff; --fg: #1f2328; --muted: #59636e; --border: #d1d9e0; --soft: #f6f8fa; --card: #ffffff; --accent: #6d28d9;
+    --app: #dcfce7; --app-b: #16a34a; --orm: #ffe4e6; --orm-b: #e11d48; --ado: #ede9fe; --ado-b: #7c3aed; --db: #fef9c3; --db-b: #ca8a04;
+    font-family: "Segoe UI", "Microsoft JhengHei", "Noto Sans TC", "PingFang TC", sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    svg {
+      --bg: #0d1117; --fg: #e6edf3; --muted: #9198a1; --border: #3d444d; --soft: #151b23; --card: #151b23; --accent: #b58cff;
+      --app: #12261b; --app-b: #3fb950; --orm: #3b1520; --orm-b: #f472b6; --ado: #231a3d; --ado-b: #a78bfa; --db: #2b2408; --db-b: #facc15;
+    }
+  }
+  .bg { fill: var(--bg); }
+  text { fill: var(--fg); font-size: 13px; }
+  .title { font-size: 16px; font-weight: 700; }
+  .b { font-size: 15px; font-weight: 700; }
+  .s { font-size: 12.5px; fill: var(--muted); }
+  .arrow-t { font-size: 12.5px; fill: var(--muted); }
+  .arrow { font-size: 20px; font-weight: 700; fill: var(--accent); }
+  .tag { font-size: 11px; font-weight: 700; }
+  .tag-yes { fill: var(--orm-b); } .tag-no { fill: var(--muted); }
+  .panel { fill: var(--card); stroke: var(--border); stroke-width: 1.5; }
+  .abstract { fill: none; stroke: var(--muted); stroke-width: 2; stroke-dasharray: 7 5; }
+  .box.app { fill: var(--app); stroke: var(--app-b); stroke-width: 2; }
+  .box.orm { fill: var(--orm); stroke: var(--orm-b); stroke-width: 2; }
+  .box.ado { fill: var(--ado); stroke: var(--ado-b); stroke-width: 2; }
+  .db { fill: var(--db); stroke: var(--db-b); stroke-width: 2; }
+  .db-top { fill: var(--db); stroke: var(--db-b); stroke-width: 2; filter: brightness(.95); }
+  .pill { fill: var(--card); stroke-width: 1; }
+</style>
+<rect class="bg" x="0" y="0" width="1000" height="600" rx="12"/>
+
+<!-- 左：沒有 ORM -->
+<rect class="panel" x="20" y="20" width="460" height="560" rx="14"/>
+<text class="title" x="250" y="52" text-anchor="middle">沒有 ORM：ADO.NET + class</text>
+<rect class="box app" x="50" y="75" width="400" height="80" rx="10"/>
+<text class="b" x="250" y="104" text-anchor="middle">你的程式碼</text>
+<text class="s" x="250" y="124" text-anchor="middle">寫 SQL 字串、加參數、逐格讀值、轉成物件、</text>
+<text class="s" x="250" y="142" text-anchor="middle">記住改了什麼、自己組 UPDATE</text>
+<text class="arrow-t" x="195" y="190" text-anchor="end">SQL 文字</text>
+<text class="arrow" x="250" y="195" text-anchor="middle">↓ ↑</text>
+<text class="arrow-t" x="305" y="190">結果表</text>
+<rect class="box ado" x="50" y="215" width="400" height="70" rx="10"/>
+<text class="b" x="250" y="244" text-anchor="middle">ADO.NET</text>
+<text class="s" x="250" y="266" text-anchor="middle">Microsoft.Data.SqlClient：連線、送 SQL、收結果表</text>
+<text class="arrow-t" x="195" y="322" text-anchor="end">SQL 文字</text>
+<text class="arrow" x="250" y="327" text-anchor="middle">↓ ↑</text>
+<text class="arrow-t" x="305" y="322">結果表</text>
+<path class="db" d="M170,375 v60 a80,20 0 0 0 160,0 v-60"/>
+<ellipse class="db" cx="250" cy="375" rx="80" ry="20"/>
+<ellipse class="db-top" cx="250" cy="375" rx="80" ry="20"/>
+<text class="b" x="250" y="420" text-anchor="middle">資料庫</text>
+
+<!-- 右：有 ORM -->
+<rect class="panel" x="520" y="20" width="460" height="560" rx="14"/>
+<text class="title" x="750" y="52" text-anchor="middle">有 ORM：EF Core</text>
+<rect class="box app" x="550" y="75" width="400" height="80" rx="10"/>
+<text class="b" x="750" y="104" text-anchor="middle">你的程式碼</text>
+<text class="s" x="750" y="124" text-anchor="middle">LINQ 查詢、操作物件、</text>
+<text class="s" x="750" y="142" text-anchor="middle">呼叫 SaveChanges()</text>
+<text class="arrow-t" x="695" y="190" text-anchor="end">LINQ / 物件的變更</text>
+<text class="arrow" x="750" y="195" text-anchor="middle">↓ ↑</text>
+<text class="arrow-t" x="805" y="190">物件</text>
+
+<rect class="abstract" x="540" y="212" width="420" height="258" rx="12"/>
+<text class="s" x="555" y="232" font-weight="700">你不用直接碰的部分（被抽象化）</text>
+<rect class="box orm" x="565" y="245" width="370" height="80" rx="10"/>
+<rect class="pill" x="724" y="252" width="52" height="16" rx="8" stroke="var(--orm-b)"/>
+<text class="tag tag-yes" x="750" y="264" text-anchor="middle">ORM</text>
+<text class="b" x="750" y="290" text-anchor="middle">EF Core</text>
+<text class="s" x="750" y="311" text-anchor="middle">LINQ → SQL、結果表 → 物件、變更追蹤</text>
+<text class="arrow-t" x="695" y="356" text-anchor="end">SQL 文字</text>
+<text class="arrow" x="750" y="361" text-anchor="middle">↓ ↑</text>
+<text class="arrow-t" x="805" y="356">結果表</text>
+<rect class="box ado" x="565" y="380" width="370" height="76" rx="10"/>
+<rect class="pill" x="713" y="387" width="74" height="16" rx="8" stroke="var(--border)"/>
+<text class="tag tag-no" x="750" y="399" text-anchor="middle">不是 ORM</text>
+<text class="b" x="750" y="424" text-anchor="middle">ADO.NET</text>
+<text class="s" x="750" y="444" text-anchor="middle">Microsoft.Data.SqlClient，由 EF Core 替你呼叫</text>
+
+<text class="arrow-t" x="695" y="492" text-anchor="end">SQL 文字</text>
+<text class="arrow" x="750" y="497" text-anchor="middle">↓ ↑</text>
+<text class="arrow-t" x="805" y="492">結果表</text>
+<path class="db" d="M690,525 v30 a60,14 0 0 0 120,0 v-30"/>
+<ellipse class="db" cx="750" cy="525" rx="60" ry="14"/>
+<ellipse class="db-top" cx="750" cy="525" rx="60" ry="14"/>
+<text class="b" x="750" y="558" text-anchor="middle" font-size="13">資料庫</text>
+</svg>
