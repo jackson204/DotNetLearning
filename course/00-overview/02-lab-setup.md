@@ -90,46 +90,18 @@ dotnet run -- linq-select
 
 ## 範例資料長什麼樣子
 
-一個小型部落格平台：部落格、頁首、作者、文章、標籤。剛好涵蓋一對一、一對多、多對多三種關聯。
+一個小型部落格平台：部落格、頁首、作者、文章、標籤，再加一張 EF Core 自動建立的中間表 `PostTag`。剛好涵蓋一對一、一對多、多對多三種關聯。
 
-```mermaid
-erDiagram
-    Blogs ||--o| BlogHeaders : "一對一"
-    Blogs ||--o{ Posts : "一對多"
-    Authors |o--o{ Posts : "一對多（可無作者）"
-    Posts }o--o{ Tags : "多對多（經由 PostTag）"
-    Blogs {
-        int BlogId PK
-        nvarchar Url
-        int Rating "可為 NULL"
-    }
-    BlogHeaders {
-        int BlogHeaderId PK
-        nvarchar Title
-        nvarchar Subtitle "可為 NULL"
-        int BlogId FK
-    }
-    Authors {
-        int AuthorId PK
-        nvarchar Name
-        nvarchar Email "可為 NULL"
-    }
-    Posts {
-        int PostId PK
-        nvarchar Title
-        nvarchar Content "可為 NULL"
-        date PublishedOn
-        int Views
-        int BlogId FK
-        int AuthorId FK "可為 NULL"
-    }
-    Tags {
-        int TagId PK
-        nvarchar Name
-    }
-```
+![EfCoreLab 的六張資料表與外鍵關聯](../images/lab-schema.svg)
 
-*圖 1　EfCoreLab 的資料表與關聯*
+*圖 1　EfCoreLab 的資料表與關聯（資料庫圖）*
+
+> [!TIP]
+> **怎麼讀這張圖**
+>
+> 每個方塊是一張資料表，一列一個欄位：左邊是欄位名稱，右邊是型別，**PK** 是主鍵、**FK** 是外鍵、**NULL** 表示這格可以沒有值。
+>
+> 線從 FK 欄位連到它指向的 PK 欄位，線兩端的記號是「對面有幾筆」：`||` 恰好一個、`o|` 零或一、`o{` 零或多。例如 Posts.AuthorId 那條線，Authors 那端是 `o|`，就是「一篇文章可以沒有作者」。多對多不會直接連 Posts 和 Tags，而是各自一對多到中間表 `PostTag`。
 
 ### Blogs（3 筆）與 BlogHeaders（2 筆）
 

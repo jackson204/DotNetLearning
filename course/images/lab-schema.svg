@@ -1,0 +1,172 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 506" width="1000" height="506" role="img" aria-label="EfCoreLab 的六張資料表與外鍵關聯：Blogs 一對一 BlogHeaders、Blogs 一對多 Posts、Authors 一對多 Posts（作者可為空）、Posts 與 Tags 多對多經由中間表 PostTag">
+<style>
+  svg {
+    --bg: #ffffff; --fg: #1f2328; --muted: #59636e; --border: #d1d9e0; --soft: #f6f8fa; --card: #ffffff;
+    --accent: #6d28d9; --accent-soft: #ede9fe; --line: #6d28d9; --fk: #ea580c; --fk-soft: #ffedd5;
+    font-family: "Segoe UI", "Microsoft JhengHei", "Noto Sans TC", "PingFang TC", sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    svg {
+      --bg: #0d1117; --fg: #e6edf3; --muted: #9198a1; --border: #3d444d; --soft: #151b23; --card: #161b22;
+      --accent: #b58cff; --accent-soft: #2a1f45; --line: #b58cff; --fk: #fb923c; --fk-soft: #3b2412;
+    }
+  }
+  .bg { fill: var(--bg); }
+  text { fill: var(--fg); font-size: 13.5px; }
+  .card { fill: var(--card); stroke: var(--border); stroke-width: 1.5; }
+  .head { fill: var(--soft); }
+  .tname { font-size: 15px; font-weight: 700; }
+  .sep { stroke: var(--border); stroke-width: 1; }
+  .col { font-size: 13.5px; }
+  .col.pk { font-weight: 700; }
+  .type { font-size: 12.5px; fill: var(--muted); font-family: "Cascadia Code", Consolas, "Courier New", monospace; }
+  .null { font-size: 11.5px; font-weight: 700; fill: var(--fk); }
+  .badge.pk { fill: var(--accent-soft); } .badge-t.pk { fill: var(--accent); }
+  .badge.fk { fill: var(--fk-soft); } .badge-t.fk { fill: var(--fk); }
+  .badge-t { font-size: 10.5px; font-weight: 800; }
+  .link { fill: none; stroke: var(--line); stroke-width: 2; stroke-linejoin: round; stroke-linecap: round; }
+  .mark line { stroke: var(--line); stroke-width: 2; stroke-linecap: round; }
+  .mark .zero { fill: var(--bg); stroke: var(--line); stroke-width: 2; }
+  .lbl { font-size: 12.5px; font-weight: 700; fill: var(--accent); }
+  .sub { font-size: 11.5px; fill: var(--muted); }
+  .leg { font-size: 12.5px; fill: var(--muted); }
+</style>
+<rect class="bg" x="0" y="0" width="1000" height="506" rx="12"/>
+<g class="table" data-table="PostTag">
+<rect class="card" x="375" y="48" width="250" height="84" rx="8"/>
+<path class="head" d="M383,48 h234 a8,8 0 0 1 8,8 v24 h-250 v-24 a8,8 0 0 1 8,-8 z"/>
+<text class="tname" x="500" y="69" text-anchor="middle">PostTag</text>
+<rect class="badge pk" x="387" y="85" width="26" height="16" rx="4"/>
+<text class="badge-t pk" x="400" y="97" text-anchor="middle">PK</text>
+<rect class="badge fk" x="417" y="85" width="26" height="16" rx="4"/>
+<text class="badge-t fk" x="430" y="97" text-anchor="middle">FK</text>
+<text class="col pk" x="453" y="97.5">PostsPostId</text>
+<text x="613" y="97.5" text-anchor="end"><tspan class="type">int</tspan></text>
+<line class="sep" x1="375" y1="106" x2="625" y2="106"/>
+<rect class="badge pk" x="387" y="111" width="26" height="16" rx="4"/>
+<text class="badge-t pk" x="400" y="123" text-anchor="middle">PK</text>
+<rect class="badge fk" x="417" y="111" width="26" height="16" rx="4"/>
+<text class="badge-t fk" x="430" y="123" text-anchor="middle">FK</text>
+<text class="col pk" x="453" y="123.5">TagsTagId</text>
+<text x="613" y="123.5" text-anchor="end"><tspan class="type">int</tspan></text>
+</g>
+<g class="table" data-table="Posts">
+<rect class="card" x="375" y="176" width="250" height="214" rx="8"/>
+<path class="head" d="M383,176 h234 a8,8 0 0 1 8,8 v24 h-250 v-24 a8,8 0 0 1 8,-8 z"/>
+<text class="tname" x="500" y="197" text-anchor="middle">Posts</text>
+<rect class="badge pk" x="387" y="213" width="26" height="16" rx="4"/>
+<text class="badge-t pk" x="400" y="225" text-anchor="middle">PK</text>
+<text class="col pk" x="423" y="225.5">PostId</text>
+<text x="613" y="225.5" text-anchor="end"><tspan class="type">int</tspan></text>
+<line class="sep" x1="375" y1="234" x2="625" y2="234"/>
+<text class="col" x="423" y="251.5">Title</text>
+<text x="613" y="251.5" text-anchor="end"><tspan class="type">nvarchar(200)</tspan></text>
+<line class="sep" x1="375" y1="260" x2="625" y2="260"/>
+<text class="col" x="423" y="277.5">Content</text>
+<text x="613" y="277.5" text-anchor="end"><tspan class="type">nvarchar(max)</tspan><tspan class="null"> NULL</tspan></text>
+<line class="sep" x1="375" y1="286" x2="625" y2="286"/>
+<text class="col" x="423" y="303.5">PublishedOn</text>
+<text x="613" y="303.5" text-anchor="end"><tspan class="type">date</tspan></text>
+<line class="sep" x1="375" y1="312" x2="625" y2="312"/>
+<text class="col" x="423" y="329.5">Views</text>
+<text x="613" y="329.5" text-anchor="end"><tspan class="type">int</tspan></text>
+<line class="sep" x1="375" y1="338" x2="625" y2="338"/>
+<rect class="badge fk" x="387" y="343" width="26" height="16" rx="4"/>
+<text class="badge-t fk" x="400" y="355" text-anchor="middle">FK</text>
+<text class="col" x="423" y="355.5">BlogId</text>
+<text x="613" y="355.5" text-anchor="end"><tspan class="type">int</tspan></text>
+<line class="sep" x1="375" y1="364" x2="625" y2="364"/>
+<rect class="badge fk" x="387" y="369" width="26" height="16" rx="4"/>
+<text class="badge-t fk" x="400" y="381" text-anchor="middle">FK</text>
+<text class="col" x="423" y="381.5">AuthorId</text>
+<text x="613" y="381.5" text-anchor="end"><tspan class="type">int</tspan><tspan class="null"> NULL</tspan></text>
+</g>
+<g class="table" data-table="Blogs">
+<rect class="card" x="25" y="306" width="250" height="110" rx="8"/>
+<path class="head" d="M33,306 h234 a8,8 0 0 1 8,8 v24 h-250 v-24 a8,8 0 0 1 8,-8 z"/>
+<text class="tname" x="150" y="327" text-anchor="middle">Blogs</text>
+<rect class="badge pk" x="37" y="343" width="26" height="16" rx="4"/>
+<text class="badge-t pk" x="50" y="355" text-anchor="middle">PK</text>
+<text class="col pk" x="73" y="355.5">BlogId</text>
+<text x="263" y="355.5" text-anchor="end"><tspan class="type">int</tspan></text>
+<line class="sep" x1="25" y1="364" x2="275" y2="364"/>
+<text class="col" x="73" y="381.5">Url</text>
+<text x="263" y="381.5" text-anchor="end"><tspan class="type">nvarchar(200)</tspan></text>
+<line class="sep" x1="25" y1="390" x2="275" y2="390"/>
+<text class="col" x="73" y="407.5">Rating</text>
+<text x="263" y="407.5" text-anchor="end"><tspan class="type">int</tspan><tspan class="null"> NULL</tspan></text>
+</g>
+<g class="table" data-table="BlogHeaders">
+<rect class="card" x="25" y="126" width="250" height="136" rx="8"/>
+<path class="head" d="M33,126 h234 a8,8 0 0 1 8,8 v24 h-250 v-24 a8,8 0 0 1 8,-8 z"/>
+<text class="tname" x="150" y="147" text-anchor="middle">BlogHeaders</text>
+<rect class="badge pk" x="37" y="163" width="26" height="16" rx="4"/>
+<text class="badge-t pk" x="50" y="175" text-anchor="middle">PK</text>
+<text class="col pk" x="73" y="175.5">BlogHeaderId</text>
+<text x="263" y="175.5" text-anchor="end"><tspan class="type">int</tspan></text>
+<line class="sep" x1="25" y1="184" x2="275" y2="184"/>
+<text class="col" x="73" y="201.5">Title</text>
+<text x="263" y="201.5" text-anchor="end"><tspan class="type">nvarchar(100)</tspan></text>
+<line class="sep" x1="25" y1="210" x2="275" y2="210"/>
+<text class="col" x="73" y="227.5">Subtitle</text>
+<text x="263" y="227.5" text-anchor="end"><tspan class="type">nvarchar(max)</tspan><tspan class="null"> NULL</tspan></text>
+<line class="sep" x1="25" y1="236" x2="275" y2="236"/>
+<rect class="badge fk" x="37" y="241" width="26" height="16" rx="4"/>
+<text class="badge-t fk" x="50" y="253" text-anchor="middle">FK</text>
+<text class="col" x="73" y="253.5">BlogId</text>
+<text x="263" y="253.5" text-anchor="end"><tspan class="type">int</tspan></text>
+</g>
+<g class="table" data-table="Tags">
+<rect class="card" x="725" y="74" width="250" height="84" rx="8"/>
+<path class="head" d="M733,74 h234 a8,8 0 0 1 8,8 v24 h-250 v-24 a8,8 0 0 1 8,-8 z"/>
+<text class="tname" x="850" y="95" text-anchor="middle">Tags</text>
+<rect class="badge pk" x="737" y="111" width="26" height="16" rx="4"/>
+<text class="badge-t pk" x="750" y="123" text-anchor="middle">PK</text>
+<text class="col pk" x="773" y="123.5">TagId</text>
+<text x="963" y="123.5" text-anchor="end"><tspan class="type">int</tspan></text>
+<line class="sep" x1="725" y1="132" x2="975" y2="132"/>
+<text class="col" x="773" y="149.5">Name</text>
+<text x="963" y="149.5" text-anchor="end"><tspan class="type">nvarchar(50)</tspan></text>
+</g>
+<g class="table" data-table="Authors">
+<rect class="card" x="725" y="332" width="250" height="110" rx="8"/>
+<path class="head" d="M733,332 h234 a8,8 0 0 1 8,8 v24 h-250 v-24 a8,8 0 0 1 8,-8 z"/>
+<text class="tname" x="850" y="353" text-anchor="middle">Authors</text>
+<rect class="badge pk" x="737" y="369" width="26" height="16" rx="4"/>
+<text class="badge-t pk" x="750" y="381" text-anchor="middle">PK</text>
+<text class="col pk" x="773" y="381.5">AuthorId</text>
+<text x="963" y="381.5" text-anchor="end"><tspan class="type">int</tspan></text>
+<line class="sep" x1="725" y1="390" x2="975" y2="390"/>
+<text class="col" x="773" y="407.5">Name</text>
+<text x="963" y="407.5" text-anchor="end"><tspan class="type">nvarchar(50)</tspan></text>
+<line class="sep" x1="725" y1="416" x2="975" y2="416"/>
+<text class="col" x="773" y="433.5">Email</text>
+<text x="963" y="433.5" text-anchor="end"><tspan class="type">nvarchar(max)</tspan><tspan class="null"> NULL</tspan></text>
+</g>
+<g class="rel" data-rel="Posts.BlogId->Blogs.BlogId">
+<polyline class="link" points="275,351 375,351"/>
+<g class="mark"><line x1="359" y1="351" x2="375" y2="343"/><line x1="359" y1="351" x2="375" y2="359"/><circle class="zero" cx="351" cy="351" r="4.5"/><line x1="283" y1="344" x2="283" y2="358"/><line x1="289" y1="344" x2="289" y2="358"/></g>
+<text class="lbl" x="347" y="342" text-anchor="middle">一對多</text>
+</g>
+<g class="rel" data-rel="BlogHeaders.BlogId->Blogs.BlogId">
+<polyline class="link" points="275,249 307,249 307,351 275,351"/>
+<g class="mark"><line x1="285" y1="242" x2="285" y2="256"/><circle class="zero" cx="297" cy="249" r="4.5"/><line x1="283" y1="344" x2="283" y2="358"/><line x1="289" y1="344" x2="289" y2="358"/></g>
+<text class="lbl" x="267" y="288.5" text-anchor="end">一對一</text>
+</g>
+<g class="rel" data-rel="Posts.AuthorId->Authors.AuthorId">
+<polyline class="link" points="625,377 725,377"/>
+<g class="mark"><line x1="641" y1="377" x2="625" y2="369"/><line x1="641" y1="377" x2="625" y2="385"/><circle class="zero" cx="649" cy="377" r="4.5"/><line x1="715" y1="370" x2="715" y2="384"/><circle class="zero" cx="703" cy="377" r="4.5"/></g>
+<text class="lbl" x="675" y="368" text-anchor="middle">一對多</text>
+<text class="sub" x="675" y="395" text-anchor="middle">作者可為空</text>
+</g>
+<g class="rel" data-rel="PostTag.PostsPostId->Posts.PostId">
+<polyline class="link" points="375,93 343,93 343,221 375,221"/>
+<g class="mark"><line x1="359" y1="93" x2="375" y2="85"/><line x1="359" y1="93" x2="375" y2="101"/><circle class="zero" cx="351" cy="93" r="4.5"/><line x1="367" y1="214" x2="367" y2="228"/><line x1="361" y1="214" x2="361" y2="228"/></g>
+</g>
+<g class="rel" data-rel="PostTag.TagsTagId->Tags.TagId">
+<polyline class="link" points="625,119 725,119"/>
+<g class="mark"><line x1="641" y1="119" x2="625" y2="111"/><line x1="641" y1="119" x2="625" y2="127"/><circle class="zero" cx="649" cy="119" r="4.5"/><line x1="717" y1="112" x2="717" y2="126"/><line x1="711" y1="112" x2="711" y2="126"/></g>
+</g>
+<text class="lbl" x="500" y="34" text-anchor="middle">多對多：Posts ⟷ Tags 經由中間表 PostTag</text>
+<g class="legend"><g transform="translate(25,478)"><g class="rel"><line class="link" x1="0" y1="0" x2="28" y2="0"/><g class="mark"><line x1="20" y1="-7" x2="20" y2="7"/><line x1="14" y1="-7" x2="14" y2="7"/></g></g><text class="leg" x="34" y="4.5">恰好一個</text></g><g transform="translate(135,478)"><g class="rel"><line class="link" x1="0" y1="0" x2="28" y2="0"/><g class="mark"><line x1="18" y1="-7" x2="18" y2="7"/><circle class="zero" cx="6" cy="0" r="4.5"/></g></g><text class="leg" x="34" y="4.5">零或一</text></g><g transform="translate(231,478)"><g class="rel"><line class="link" x1="0" y1="0" x2="28" y2="0"/><g class="mark"><line x1="12" y1="0" x2="28" y2="-8"/><line x1="12" y1="0" x2="28" y2="8"/><circle class="zero" cx="4" cy="0" r="4.5"/></g></g><text class="leg" x="34" y="4.5">零或多</text></g><g transform="translate(331,478)"><rect class="badge pk" x="0" y="-8" width="26" height="16" rx="4"/><text class="badge-t pk" x="13" y="4" text-anchor="middle">PK</text><text class="leg" x="34" y="4.5">主鍵</text></g><g transform="translate(409,478)"><rect class="badge fk" x="0" y="-8" width="26" height="16" rx="4"/><text class="badge-t fk" x="13" y="4" text-anchor="middle">FK</text><text class="leg" x="34" y="4.5">外鍵（指向別張表的主鍵）</text></g><g transform="translate(615,478)"><text class="null" x="0" y="4.5">NULL</text><text class="leg" x="34" y="4.5">可為 NULL（這格可以沒有值）</text></g></g>
+</svg>

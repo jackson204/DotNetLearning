@@ -2,6 +2,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { buildLabSchema } from './diagrams/lab-schema.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const template = fs.readFileSync(path.join(ROOT, 'build/diagrams/overview.template.svg'), 'utf8');
@@ -17,3 +18,7 @@ for (const [suffix, hl] of Object.entries(variants)) {
   fs.writeFileSync(path.join(outDir, `overview${suffix}.svg`), template.replace('/*HL*/', css));
 }
 console.log(`course/images/overview*.svg 已產生（${Object.keys(variants).length} 個）`);
+
+// 資料庫圖（EfCoreLab 六張表與外鍵）：欄位資料寫在 build/diagrams/lab-schema.mjs
+buildLabSchema();
+console.log('course/images/lab-schema.svg 已產生');
